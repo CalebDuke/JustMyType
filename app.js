@@ -55,12 +55,54 @@ $(document).ready(function() {
         currentLetter = currentSentence[letterIndex];
         $('#target-letter').text(currentLetter);
 
+ //test sentence check
+        //console.log('letterIndex: '+ letterIndex + 'currentSentenceLength: ' + currentSentence.length);
+        if (letterIndex == currentSentence.length) {
+            sentIndex++;
+            if (sentIndex == sentences.length) {
+                gameover = true;
+                //$('#feedback').remove();
+                console.log('gameover');
+            }
+
+            if (!gameover) {
+                letterIndex = 0;
+                currentSentence = sentences[sentIndex];
+                currentLetter = currentSentence[letterIndex];
+                $('#sentence').text(currentSentence);
+                $('#target-letter').text(currentLetter);
+                //console.log(letterIndex);
+                //console.log(currentSentence);
+                $('#yellow-block').css('left', '20px');
+                $('#feedback').empty();
+                $('#feedback').stop()
+            };
+
+            console.log('gameover2' + gameover)
+
+            //clear screen and display final score
+            if (gameover == true) {
+                //console.log('boom')
+                $('#sentence').empty();
+                $('#target-letter').empty();
+                $('#yellow-block').css('left', '2000px');
+                $('#feedback').remove();
+
+            //create timer and score
+
+
+            }
+
+        };
+
+        currentLetter = currentSentence[letterIndex];
+        $('#target-letter').text(currentLetter);
+
+    })
+        
+
     });
    
 
-
-
-
-})
 
 
