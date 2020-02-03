@@ -25,15 +25,21 @@ $(document).ready(function () {
     $('#keyboard-upper-container').hide();
 
     // While the shift key is held down, hide the lowercase keyboard and show the uppercase one
-    $(document).keydown(function () {
+    $(document).keydown(function (e) {
         if (event.which == 16) {
             // console.log("Shift was pressed!");
             $('#keyboard-upper-container').show();
             $('#keyboard-lower-container').hide();
-
-            if (letterIndex == sentences[0][0]){
-                startTime = Date.now()
-            }
+            
+        }
+        if (e.key === sentences[0][0]){
+            startTime = Date.now()
+            console.log(startTime);
+        }
+         if(e.key === sentences[4][27]){
+         endTime = Date.now()
+         let totalTime = endTime - startTime
+         console.log(totalTime) 
         }
     })
     // When the shift key is released, show the lowercase keyboard and hide the uppercase one
@@ -62,12 +68,7 @@ $(document).ready(function () {
         $(document).keyup(function(){
             keyCharacter.removeClass('highlight')
             
-            if(letterIndex === sentences[4].length){
-                endTime = Date.now()
-                let totalTime = endTime - startTime
-                console.log(totalTime) 
-            }
-        })
+        });
 
         oldkeyChar = keyCharacter;
 
